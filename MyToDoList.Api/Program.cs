@@ -27,6 +27,9 @@ namespace MyToDoList.Api
             builder.Services.AddScoped<ITarefaRepository, TarefaRepository>();
             builder.Services.AddScoped<ITarefaService, TarefaService>();
 
+            builder.Services.AddScoped<ICorRepository, CorRepository>();
+            builder.Services.AddScoped<ICorService, CorService>();
+
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
