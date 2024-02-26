@@ -22,10 +22,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Controllers\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\MyToDoList.Application\MyToDoList.Application.csproj" />
     <ProjectReference Include="..\MyToDoList.Domain\MyToDoList.Domain.csproj" />
     <ProjectReference Include="..\MyToDoList.Infrastructure\MyToDoList.Infrastructure.csproj" />

@@ -1,6 +1,10 @@
 
 using Microsoft.EntityFrameworkCore;
+using MyToDoList.Application.Interfaces;
+using MyToDoList.Application.Services;
+using MyToDoList.Domain.Interfaces;
 using MyToDoList.Infrastructure.Datas;
+using MyToDoList.Infrastructure.Repositories;
 
 namespace MyToDoList.Api
 {
@@ -19,6 +23,9 @@ namespace MyToDoList.Api
 
             builder.Services.AddDbContext<MyToDoListDbContext>(options =>
                 options.UseSqlServer(builder.Configuration.GetConnectionString("DataBase")));
+
+            builder.Services.AddScoped<ITarefaRepository, TarefaRepository>();
+            builder.Services.AddScoped<ITarefaService, TarefaService>();
 
             var app = builder.Build();
 
