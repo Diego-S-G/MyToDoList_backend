@@ -30,6 +30,18 @@ namespace MyToDoList.Api
             builder.Services.AddScoped<ICorRepository, CorRepository>();
             builder.Services.AddScoped<ICorService, CorService>();
 
+            builder.Services.AddCors(options =>
+            {
+                options.AddPolicy("CorsPolicy", builder =>
+                {
+                    builder
+                        .AllowAnyOrigin()
+                        .AllowAnyHeader()
+                        .AllowAnyMethod();
+                });
+            });
+
+
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
@@ -38,6 +50,8 @@ namespace MyToDoList.Api
                 app.UseSwagger();
                 app.UseSwaggerUI();
             }
+
+            app.UseCors("CorsPolicy");
 
             app.UseHttpsRedirection();
 
