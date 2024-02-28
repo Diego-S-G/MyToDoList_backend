@@ -15,10 +15,23 @@ namespace MyToDoList.Api.Controllers
             _tarefaService = service;
         }
 
-        [HttpGet]
-        public async Task<IActionResult> GetListAsync()
+        [HttpGet("NaoFinalizados")]
+        public async Task<IActionResult> GetNotFinished()
         {
-            var entities = await _tarefaService.GetListAsync();
+            var entities = await _tarefaService.GetNotFinished();
+
+            if (entities == null)
+            {
+                return BadRequest();
+            }
+
+            return Ok(entities.Select(x => new { x.Id, x.Descricao, x.Finalizado }));
+        }
+
+        [HttpGet("Finalizados")]
+        public async Task<IActionResult> GetFinished()
+        {
+            var entities = await _tarefaService.GetFinished();
 
             if (entities == null)
             {

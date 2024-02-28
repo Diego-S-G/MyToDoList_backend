@@ -27,9 +27,14 @@ namespace MyToDoList.Application.Services
             return _tarefaRepository.GetCompleteAsync(id);
         }
 
-        public Task<IEnumerable<Tarefa>> GetListAsync()
+        public Task<IEnumerable<Tarefa>> GetNotFinished()
         {
-            return _tarefaRepository.GetListAsync();
+            return _tarefaRepository.GetNotFinished();
+        }
+
+        public Task<IEnumerable<Tarefa>> GetFinished()
+        {
+            return _tarefaRepository.GetFinished();
         }
 
         public Task<Tarefa> UpdateAsync(int id, Tarefa tarefa)

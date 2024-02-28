@@ -62,13 +62,23 @@ namespace MyToDoList.Infrastructure.Repositories
             return entity;
         }
 
-        public async Task<IEnumerable<Tarefa>> GetListAsync()
+        public async Task<IEnumerable<Tarefa>> GetNotFinished()
         {
-            var entity = await _context.Tarefas.ToListAsync();
+            var entity = await _context.Tarefas
+                .Where(x => x.Finalizado == false)
+                .ToListAsync();
 
             return entity;
         }
 
+        public async Task<IEnumerable<Tarefa>> GetFinished()
+        {
+            var entity = await _context.Tarefas
+                .Where(x => x.Finalizado == true)
+                .ToListAsync();
+
+            return entity;
+        }
         public async Task<Tarefa> UpdateAsync(int id, Tarefa tarefa)
         {
             var entity = GetTarefaById(id);
