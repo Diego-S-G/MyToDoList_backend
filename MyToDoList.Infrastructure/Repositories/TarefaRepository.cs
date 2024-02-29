@@ -95,5 +95,19 @@ namespace MyToDoList.Infrastructure.Repositories
             _context.SaveChanges();
             return entity;
         }
+
+        public bool DeleteAll()
+        {
+            var entities = GetFinished();
+
+            if (entities == null)
+            {
+                return false;
+            }
+
+            _context.Tarefas.RemoveRange(entities.Result);
+            _context.SaveChanges();
+            return true;
+        }
     }
 }

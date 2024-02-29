@@ -41,5 +41,10 @@ namespace MyToDoList.Application.Services
         {
             return _tarefaRepository.UpdateAsync(id, tarefa);
         }
+
+        public bool DeleteAll()
+        {
+            return _tarefaRepository.DeleteAll();
+        }
     }
 }

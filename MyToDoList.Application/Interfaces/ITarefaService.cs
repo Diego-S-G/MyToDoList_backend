@@ -10,5 +10,6 @@ namespace MyToDoList.Application.Interfaces
         Task<Tarefa> CreateAsync(Tarefa tarefa);
         Task<Tarefa> UpdateAsync(int id, Tarefa tarefa);
         bool Delete(int id);
+        bool DeleteAll();
     }
 }
